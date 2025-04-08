@@ -1,10 +1,12 @@
 import math
 import json
 import random
-import mons_db as db
-from mons_db import wiki_garchomp_1 as db_1
-from mons_db import lando_t as db_2
 
+with open("mons_db.json") as f:
+    db = json.load(f)[0]
+
+db_1 = db["wiki_garchomp_1"]
+db_2 = db["lando_t"]
 
 with open("type_chart.json") as f:
     tchart = json.load(f)[0]
@@ -234,16 +236,17 @@ class Move:
 mon_1= Mon(name="Pecharunt",types=["ghost","Fire"],bss=(88,88,160,88,88,88),ivs=(31,0,31,31,31,31),evs=(252,0,4,0,0,252),lvl=100,nature=(5,1))
 mon_2 = Mon(name="the cooler Pecharunt",types=["Poison","Ghost"],bss=(88,88,160,88,88,88),ivs=(31,0,31,31,31,31),evs=(252,0,4,0,0,252),lvl=100,nature=(5,1))
 
+#mon_1 = importMon(db_1)
 print(mon_1)
 #mon_1.hp = 10
 print()
 print(mon_2)
 
-TACKLE = Move(types="fighting",power=40,cat=3,name="the cooler Tackle",acc=90)
+TACKLE = Move(types="Water",power=80,cat=3,name="the cooler Tackle",acc=90)
 #print(TACKLE)
 
 mon_2.add_move(TACKLE)
-mon_2.add_move(Move(types="Ghost",power=40,cat=3,name="the cooler Tackle",acc=90))
+#mon_2.add_move(Move(types="Ghost",power=40,cat=3,name="the cooler Tackle",acc=90))
 
 mon_2.is_tera = False
 
